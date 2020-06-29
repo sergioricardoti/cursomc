@@ -2,27 +2,35 @@ package br.com.solene.cursomc.domain;
 
 import java.io.Serializable;
 
-// 5 - Implementar a interface Serializable na Classe
-public class Categoria implements Serializable {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//Fazendo o mapeamento da classe categoria
+@Entity
+public class Categoria implements Serializable {         // 7 - Implementar a interface Serializable na Classe
 	private static final long serialVersionUID = 1L;
 	
-	// 1 - Atributos básicos
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;                                  // 1 - Atributos básicos
 	private String nome;
 
-	// 2 - Criando um construtor vazio
-	public Categoria() {
+	
+	public Categoria() {                                 // 2 - Criando um construtor vazio
+		
 	}
 
-	// 3 - Criando o construtor com os atributos
-	public Categoria(Integer id, String nome) {
+	
+	public Categoria(Integer id, String nome) {          // 3 - Criando o construtor com os atributos
 		super();
 		this.id = id;
 		this.nome = nome;
 	}
 
-	// Getters and Setters
-	public Integer getId() {
+	
+	public Integer getId() {                             // 4 - Getters and Setters
 		return id;
 	}
 
@@ -38,16 +46,16 @@ public class Categoria implements Serializable {
 		this.nome = nome;
 	}
 
-	// 4 - Criando o HashCode e Equals do campo ID
+	
 	@Override
-	public int hashCode() {
+	public int hashCode() {                              // 5 - Criando o HashCode do campo ID             
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
-	@Override
+	@Override                                            // 6 - Criando o Equals do campo ID
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
